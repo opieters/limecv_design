@@ -1,0 +1,90 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt]{article}
+
+\usepackage{calc}
+
+% define length
+\newlength\margin
+\setlength\margin{1cm}
+
+% set a4paper width minimal options
+\usepackage[margin=\margin,noheadfoot,a4paper]{geometry}
+
+% define more lengths
+\newlength\sidewidth
+\setlength\sidewidth{0.3\paperwidth-\margin}
+
+\newlength\mainwidth
+\setlength\mainwidth{\paperwidth-4\margin-\sidewidth}
+
+% load tikz
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,backgrounds}
+
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{listings}
+
+
+% colours
+\definecolor{cvGreenLight}{HTML}{B8E4B3}
+
+% remove pages numbers and header/footer
+\pagestyle{empty}
+
+% load external fonts
+\setmonofont{Fira Mono}
+
+% set listings options for nice formatting
+\lstset{
+  basicstyle=\LARGE\ttfamily
+}
+
+% define new arrow line that is clearer to read
+\tikzstyle{<line>} = [
+  {Latex[length=3mm,width=3mm]}-{Latex[length=3mm,width=3mm]},
+  line width=0.4mm,
+]
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture,overlay]
+  % side bar
+  \draw[fill=cvGreenLight,cvGreenLight] (current page.north west) 
+    rectangle ++(\sidewidth+2\margin,-\paperheight);
+  % border
+  \fill[black!90,opacity=0.1] (current page.north west) 
+    rectangle ($(current page.north east)+(0,-\margin)$);
+  \fill[black!90,opacity=0.1] (current page.south west) 
+    rectangle ($(current page.south east)+(0,\margin)$);
+  \fill[black!90,opacity=0.1] ($(current page.north west)+(0,-\margin)$) 
+    rectangle ($(current page.south west)+(\margin,\margin)$);
+  \fill[black!90,opacity=0.1] ($(current page.north east)+(0,-\margin)$) 
+    rectangle ($(current page.south east)+(-\margin,\margin)$);
+  % internal border
+  \fill[black!90,opacity=0.1] ($(current page.north west)+(\sidewidth+\margin,-\margin)$) 
+    rectangle ++(2\margin,-\paperheight+2\margin);
+  % margins
+  \draw[<line>] (current page.west) 
+    -- ++(\margin,0) node[right] {\lstinline|\margin|};
+  \draw[<line>] (current page.west)++(\margin,4\margin) 
+    -- ++(\sidewidth,0) node[midway,above] {\lstinline|\sidewidth|};
+  \draw[<line>] (current page.west)++(\margin+\sidewidth,0) 
+    -- ++(2\margin,0) node[midway,above] {\lstinline|2\margin|};
+  \draw[<line>] (current page.west)++(3\margin+\sidewidth,4\margin) 
+    -- ++(\mainwidth,0) node[midway,above] {\lstinline|\mainwidth|};
+  \draw[<line>] (current page.west)++(3\margin+\sidewidth+\mainwidth,0) 
+    node[left] {\lstinline|\margin|} -- ++(\margin,0);
+  \draw[<line>] (current page.west)++(0,-4\margin) 
+    -- ++(\paperwidth,0) node[above,pos=0.2] {\lstinline|\paperwidth|};
+  \draw[<line>] (current page.south)++(4\margin,0) 
+    -- ++(0,\margin) node[above] {\lstinline|\margin|};
+  \draw[<line>] (current page.north)++(4\margin,0) 
+    -- ++(0,-\margin) node[below] {\lstinline|\margin|};
+  \draw[<line>] (current page.south) -- ++(0,\paperheight) 
+    node[midway,right,rotate=270,anchor=south] {\lstinline|\paperheight|};
+\end{tikzpicture}
+
+\end{document}
