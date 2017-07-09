@@ -37,15 +37,15 @@
 % links
 \usepackage{hyperref}
 
+% more advanced command definitions
+\usepackage{xparse}
+
 % advanced drawing
 \usepackage{tikz}
 \usetikzlibrary{calc,positioning,backgrounds,matrix}
 
 % pictures
 \usepackage{graphicx}
-
-% colours
-\usepackage{xcolor}
 
 % define four main colours
 \definecolor{cvGreen}{HTML}{357F2D}
@@ -99,21 +99,19 @@
     anchor=west},
   }
 
-%https://tex.stackexchange.com/questions/65731/what-is-the-thickness-of-hrulefill
+% based on https://tex.stackexchange.com/questions/65731
 \makeatletter
-\def\hrulefill{{\color{cvGreen}\leavevmode\leaders\hrule height 1pt\hfill\kern\z@}}
-\makeatother
+\def\cv@hrulefill{{\color{cvGreen}\leavevmode\leaders\hrule height 1pt\hfill\kern\z@}}
 
 % line before and after text (some tweaking is required here)
 % based on https://tex.stackexchange.com/questions/15119
-\newcommand*\ruleline[1]{\par\noindent\raisebox{\baselineskip/4}{\makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-\baselineskip/4}{#1}\hspace{1ex}\hrulefill}}}
+\NewDocumentCommand{\ruleline}{+m}{\par\noindent\raisebox{\baselineskip/4}{\makebox[\linewidth]{\cv@hrulefill\hspace{1ex}\raisebox{-\baselineskip/4}{#1}\hspace{1ex}\cv@hrulefill}}}
+\makeatother
 
-\newenvironment{cvSideBar}{%
+\NewDocumentEnvironment{cvSideBar}{}{%
   \vspace*{\fill}
   \begin{tikzpicture}[remember picture,overlay]
-    \draw (current page.center) ++(-\paperwidth/2,\paperheight/2) node (h1) {};
-    \draw (h1) ++(\cvSideWidth+2\cvMargin,-\paperheight) node (h2) {};
-    \draw[fill=cvGreenLight,cvGreenLight] (h1) rectangle (h2);
+    \fill[cvGreenLight] (current page.north west) rectangle ++(\cvSideWidth+2\cvMargin,-\paperheight);
   \end{tikzpicture}
   \begin{minipage}{\cvSideWidth}
     \begin{center}
@@ -125,7 +123,7 @@
 
 % update global colour
 \makeatletter
-\newcommand{\globalcolor}[1]{%
+\NewDocumentCommand{\globalcolor}{m}{%
   \color{#1}\global\let\default@color\current@color
 }
 \makeatother
@@ -138,7 +136,6 @@
   \begin{tikzpicture}
     \node[
       circle,
-      text=white,
       minimum size=\cvPictureWidth,
       path picture={
         \node at (path picture bounding box.center){
