@@ -105,7 +105,7 @@
 
 % line before and after text (some tweaking is required here)
 % based on https://tex.stackexchange.com/questions/15119
-\NewDocumentCommand{\ruleline}{+m}{\par\noindent\raisebox{\baselineskip/4}{\makebox[\linewidth]{\cv@hrulefill\hspace{1ex}\raisebox{-\baselineskip/4}{#1}\hspace{1ex}\cv@hrulefill}}}
+\NewDocumentCommand{\ruleline}{m}{\par\noindent\raisebox{\baselineskip/4}{\makebox[\linewidth]{\cv@hrulefill\hspace{1ex}\raisebox{-\baselineskip/4}{#1}\hspace{1ex}\cv@hrulefill}}}
 \makeatother
 
 \NewDocumentEnvironment{cvSideBar}{}{%
@@ -128,6 +128,12 @@
 }
 \makeatother
 \AtBeginDocument{\globalcolor{cvDark}}
+
+\NewDocumentCommand{\cvLanguage}{mm}{%
+  {\globaldefs=1\relax\pgfkeys{/cv/languages/lang\the\value{languages} = #2}}
+  
+  \stepcounter{languages}
+}
   
 \begin{document}
 
@@ -196,12 +202,6 @@
   \end{tikzpicture}
   
   \vspace{4pt}
-  
-\NewDocumentCommand{\cvLanguage}{mm}{%
-  {\globaldefs=1\relax\pgfkeys{/cv/languages/lang\the\value{languages} = #2}}
-  
-  \stepcounter{languages}
-}
   
   \ruleline{Languages}
   
