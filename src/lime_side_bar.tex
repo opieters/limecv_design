@@ -176,28 +176,26 @@
   
   \begin{tikzpicture}[every node/.style={inner sep=0pt, outer sep=0pt}]
     \matrix [
-      column 1/.style={anchor=center},
-      column 2/.style={anchor=west,align=left},
+      column 1/.style={anchor=center,contactIcon},
+      column 2/.style={anchor=west,align=left,contactIcon},
       column sep=5pt,
-      row sep=5pt,
-      inner sep=0pt, 
-      outer sep=0pt] (contact) {
-      \node[contactIcon]{\faMapMarker}; 
-        & \node[contactText]{Some Street 5\\B-9000 Ghent\\Belgium};\\
-      \node[contactIcon]{\faEnvelope}; 
-        & \node[contactText]{\href{mailto:me@johndoe.com}{me@johndoe.com}};\\
-      \node[contactIcon]{\faPhone}; 
-        & \node[contactText]{+1 781 555 1212};\\
-      \node[contactIcon]{\faGlobe}; 
-        & \node[contactText]{\href{https://johndoe.com}{johndoe.com}};\\
-      \node[contactIcon]{\faGithub}; 
-        & \node[contactText]{\href{https://github.com/johndoe}{johndoe}};\\
-      \node[contactIcon]{\faLinkedinSquare}; 
-        & \node[contactText]{\href{https://www.linkedin.com/in/johndoe/}{johndoe}};\\
-      \node[contactIcon]{\faTwitter}; 
-        & \node[contactText]{\href{https://twitter.com/JohnDoe}{@JohnDoe}};\\
-      \node[contactIcon]{\faKey}; 
-        & \node[contactText]{\href{https://keybase.io/johndoe}{\texttt{EA31 B617 B3A1 EFF0}}};\\
+      row sep=5pt] (contact) {
+      \node{\faMapMarker}; 
+        & \node{Some Street 5\\B-9000 Ghent\\Belgium};\\
+      \node{\faEnvelope}; 
+        & \node{\href{mailto:me@johndoe.com}{me@johndoe.com}};\\
+      \node{\faPhone}; 
+        & \node{+1 781 555 1212};\\
+      \node{\faGlobe}; 
+        & \node{\href{https://johndoe.com}{johndoe.com}};\\
+      \node{\faGithub}; 
+        & \node{\href{https://github.com/johndoe}{johndoe}};\\
+      \node{\faLinkedinSquare}; 
+        & \node{\href{https://www.linkedin.com/in/johndoe/}{johndoe}};\\
+      \node{\faTwitter}; 
+        & \node{\href{https://twitter.com/JohnDoe}{@JohnDoe}};\\
+      \node{\faKey}; 
+        & \node{\href{https://keybase.io/johndoe}{\texttt{EA31 B617 B3A1 EFF0}}};\\
   };
   \end{tikzpicture}
   
@@ -209,14 +207,14 @@
   
   \begin{tikzpicture}[every node/.style={text depth=0pt,inner sep=0pt,outer sep=0pt}]
     \matrix [
-      column 1/.style={anchor=east},
-      column sep=6pt,
-      row sep=6pt,
-      column 2/.style={anchor=west,align=left}
+      column 1/.style={anchor=east,languageText},
+      column 2/.style={anchor=west,progressArea}
+      column sep=5pt,
+      row sep=5pt,
       ] (contact) {
-      \node[languageText]{English}; & \node[progressArea] (language 1) {}; \\
-      \node[languageText]{German};  & \node[progressArea] (language 2) {}; \\
-      \node[languageText]{Spanish}; & \node[progressArea] (language 3) {}; \\
+      \node{English}; & \node (language 1) {}; \\
+      \node{German};  & \node (language 2) {}; \\
+      \node{Spanish}; & \node (language 3) {}; \\
     };
     \draw (language 1.west) node[progressBar,minimum width=5/5*\cvLanguageBarWidth] {};
     \draw (language 2.west) node[progressBar,minimum width=3/5*\cvLanguageBarWidth] {};
