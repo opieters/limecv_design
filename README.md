@@ -1,7 +1,7 @@
-Design totorial files for LimeCV XeLaTeX Documentclass
+Design Tutorial Files for LimeCV XeLaTeX Documentclass
 ======================================================
 
-These files are part of [this totorial](https://olivierpieters.be/blog/).
+These files are part of [this tutorial](https://olivierpieters.be/blog/).
 
 Example CV:
 
