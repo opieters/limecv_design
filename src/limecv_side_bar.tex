@@ -85,10 +85,10 @@
   },
   languageText/.style={},
   progressArea/.style={%
+    draw,
+    rectangle,
     minimum width=\cvLanguageBarWidth,
     minimum height=\cvLanguageBarHeight,
-    rectangle,
-    draw,
     cvGreen},
   progressBar/.style={%
     minimum height=\cvLanguageBarHeight,
@@ -181,7 +181,7 @@
       column sep=5pt,
       row sep=5pt] (contact) {
       \node{\faMapMarker}; 
-        & \node{Some Street 5\\B-9000 Ghent\\Belgium};\\
+        & \node{Some Street 5\\B-0000 City\\Country};\\
       \node{\faEnvelope}; 
         & \node{\href{mailto:me@johndoe.com}{me@johndoe.com}};\\
       \node{\faPhone}; 
@@ -195,7 +195,7 @@
       \node{\faTwitter}; 
         & \node{\href{https://twitter.com/JohnDoe}{@JohnDoe}};\\
       \node{\faKey}; 
-        & \node{\href{https://keybase.io/johndoe}{\texttt{EA31 B617 B3A1 EFF0}}};\\
+        & \node{\href{https://keybase.io/johndoe}{\texttt{AAAA BBBB 0000 5555}}};\\
   };
   \end{tikzpicture}
   
@@ -207,14 +207,14 @@
   
   \begin{tikzpicture}[every node/.style={text depth=0pt,inner sep=0pt,outer sep=0pt}]
     \matrix [
-      column 1/.style={anchor=east,languageText},
-      column 2/.style={anchor=west,progressArea}
+      column 1/.style={anchor=east},
+      column 2/.style={anchor=west},
       column sep=5pt,
       row sep=5pt,
       ] (contact) {
-      \node{English}; & \node (language 1) {}; \\
-      \node{German};  & \node (language 2) {}; \\
-      \node{Spanish}; & \node (language 3) {}; \\
+      \node[languageText]{English}; & \node[progressArea] (language 1) {}; \\
+      \node[languageText]{German};  & \node[progressArea] (language 2) {}; \\
+      \node[languageText]{Spanish}; & \node[progressArea] (language 3) {}; \\
     };
     \draw (language 1.west) node[progressBar,minimum width=5/5*\cvLanguageBarWidth] {};
     \draw (language 2.west) node[progressBar,minimum width=3/5*\cvLanguageBarWidth] {};
