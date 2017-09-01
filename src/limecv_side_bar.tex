@@ -108,19 +108,6 @@
 \NewDocumentCommand{\ruleline}{m}{\par\noindent\raisebox{\baselineskip/4}{\makebox[\linewidth]{\cv@hrulefill\hspace{1ex}\raisebox{-\baselineskip/4}{#1}\hspace{1ex}\cv@hrulefill}}}
 \makeatother
 
-\NewDocumentEnvironment{cvSideBar}{}{%
-  \vspace*{\fill}
-  \begin{tikzpicture}[remember picture,overlay]
-    \fill[cvGreenLight] (current page.north west) rectangle ++(\cvSideWidth+2\cvMargin,-\paperheight);
-  \end{tikzpicture}
-  \begin{minipage}{\cvSideWidth}
-    \begin{center}
-}{%
-    \end{center}
-  \end{minipage}
-  \vspace*{\fill}
-}
-
 % update global colour
 \makeatletter
 \NewDocumentCommand{\globalcolor}{m}{%
@@ -137,7 +124,12 @@
   
 \begin{document}
 
-\begin{cvSideBar}
+  \vspace*{\fill}
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[cvGreenLight] (current page.north west) rectangle ++(\cvSideWidth+2\cvMargin,-\paperheight);
+  \end{tikzpicture}
+  \begin{minipage}{\cvSideWidth}
+    \begin{center}
   
   \begin{tikzpicture}
     \node[
@@ -221,6 +213,8 @@
     \draw (language 3.west) node[progressBar,minimum width=3/5*\cvLanguageBarWidth] {};
   \end{tikzpicture}
 
-\end{cvSideBar}
+    \end{center}
+  \end{minipage}
+  \vspace*{\fill}
 
 \end{document}
