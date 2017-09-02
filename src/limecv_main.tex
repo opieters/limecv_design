@@ -34,6 +34,12 @@
 \newlength\cvLanguageBarHeight
 \setlength\cvLanguageBarHeight{0.75em}
 
+\newlength\cvTimeDotSep
+\setlength\cvTimeDotSep{0.4cm}
+\usepackage{calc}
+\newlength\cvHeaderIconWidth
+
+\newcommand{\cvSection}[1]{\Large\textbf{#1}}
 % links
 \usepackage{hyperref}
 
@@ -70,6 +76,9 @@
 \setlength{\topskip}{0pt}      % between header and text (0 needed for vertical centring)
 \usepackage{parskip}           % remove paragraph indents
 
+% we can only set this length after loading the fonts
+\setlength{\cvHeaderIconWidth}{\maxof{\widthof{\faBriefcase}}{\widthof{\faGraduationCap}}}
+
 % set TikZ styles
 \tikzset{
   contactIcon/.style={%
@@ -80,7 +89,7 @@
     text depth=0pt,
   },
   headerIcon/.style={
-    minimum width=\headericonwidth,
+    minimum width=\cvHeaderIconWidth,
     anchor=center,
   },
   languageText/.style={},
@@ -97,6 +106,9 @@
     fill,
     cvGreen,
     anchor=west},
+  sectionTitle/.style={
+    anchor=north west,
+    align=left},
   }
 
 % based on https://tex.stackexchange.com/questions/65731
@@ -216,5 +228,28 @@
     \end{center}
   \end{minipage}
   \vspace*{\fill}
+  
+\begin{tikzpicture}[
+  every node/.style={
+    inner sep=0pt,
+    outer sep=0pt
+  },
+  remember picture,
+  overlay,
+  shift={($(current page.north west)%
+           +(\cvSideWidth+3\cvMargin+\cvTimeDotSep,-\cvMargin)$)}]
+  % main content  
+  
+  \node[sectionTitle] at (0,0) (title 1) {\cvSection{Education}};
+  \node[left=\cvTimeDotSep of title 1,headerIcon] {\faGraduationCap};
+  \begin{scope}[on background layer]
+    \draw[line width=2pt,cvGreen] 
+      let \p1=(title 1.south west), 
+          \p2=(current page.east) in 
+      (\x1,\y1-0.1cm) to (\x2,\y1-0.1cm);
+  \end{scope}
+  
+
+\end{tikzpicture}
 
 \end{document}
