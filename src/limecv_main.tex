@@ -36,10 +36,15 @@
 
 \newlength\cvTimeDotSep
 \setlength\cvTimeDotSep{0.4cm}
+
+\newlength{\cvSectionSep}
+\setlength{\cvSectionSep}{0.4cm}
+
 \usepackage{calc}
 \newlength\cvHeaderIconWidth
 
 \newcommand{\cvSection}[1]{\Large\textbf{#1}}
+
 % links
 \usepackage{hyperref}
 
@@ -109,6 +114,28 @@
   sectionTitle/.style={
     anchor=north west,
     align=left},
+  eventdottext/.style = {
+    text width=\cvMainWidth-\cvTimeDotSep,
+    black,
+    %text depth=0pt,
+    anchor=north west,
+  },
+  sectionedutext/.style={
+    eventdottext,
+    anchor=north west
+  },
+  invisibletimedot/.style = {
+    circle,
+    minimum width=3pt,
+    anchor=center
+  },
+  timedot/.style = {
+    invisibletimedot,
+    draw,
+    minimum width=3pt,
+    fill,
+    black,
+  },
   }
 
 % based on https://tex.stackexchange.com/questions/65731
@@ -249,6 +276,28 @@
       (\x1,\y1-0.1cm) to (\x2,\y1-0.1cm);
   \end{scope}
   
+  \node[
+      below=\cvSectionSep of title 1.south west,
+      eventdottext] 
+      (item 1 header) 
+      {\phantom{Evening}};
+  \node[
+    below=\cvSectionSep of title 1.south west,
+    sectionedutext] 
+    (item 1) 
+    {Evening class: Chinese \\
+                 Some School, City.\\
+                 September 2015 -- June 2016};
+  \node[
+    left=\cvTimeDotSep of item 1 header,
+    timedot] 
+    (start) 
+    {};
+  \node[
+    left=\cvTimeDotSep of item 1.south west,
+    invisibletimedot] 
+    (end) 
+    {};
 
 \end{tikzpicture}
 
