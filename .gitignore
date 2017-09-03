@@ -219,5 +219,5 @@ TSWLatexianTemp*
 # expex forward references with \gathertags
 *-tags.tex
 src/lime_layout.pdf
-src/lime_side_bar.pdf
+src/lime_sidebar.pdf
 *.pdf
