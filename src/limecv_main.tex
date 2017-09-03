@@ -339,6 +339,83 @@
     (end) 
     {};
   \draw (start) to (end.center);
+  
+  %%%%%%%%%%%%%%
+  % Experience %
+  %%%%%%%%%%%%%%
+  
+  \node[below=0.6cm of item 3.south west,sectionTitle] (title 2) {\cvSection{Experience}};
+  \node[left=\cvTimeDotSep of title 2,headerIcon] {\faBriefcase};
+  \node[below=0.6cm of item 3.south west,sectionTitle] (title 2 dummy) {\phantom{\cvSection{Education}}};
+  \begin{scope}[on background layer]
+    \draw[line width=2pt,cvGreen] 
+      let \p1=(title 2 dummy.south west), 
+          \p2=(current page.east) in 
+      (\x1,\y1-0.1cm) to (\x2,\y1-0.1cm);
+  \end{scope}
+  
+\node[
+      below=\cvSectionSep of title 2.south west,
+      eventdottext] 
+      (item 1 header) 
+      {\phantom{Evening}};
+  \node[
+    below=\cvSectionSep of title 2.south west,
+    sectionedutext] 
+    (item 1) 
+    {Student Job\\
+              \textsc{\selectfont Company X}, Location X\\
+              Integer tincidunt dapibus consectetur. Nullam tristique aliquam luctus. Sed ut ante velit. Nulla pharetra maximus lacus at elementum. Suspendisse sodales consectetur metus, sit amet ultricies ipsum ultrices ut.\\
+              Summer 2010};
+  \node[
+    left=\cvTimeDotSep of item 1 header,
+    timedot] 
+    (start) 
+    {};
+    
+  % item 2
+  \node[
+      below=\cvSectionSep of item 1.south west,
+      eventdottext] 
+      (item 2 header) 
+      {\phantom{Evening}};
+  \node[
+    below=\cvSectionSep of item 1.south west,
+    sectionedutext] 
+    (item 2) 
+    {Internship\\
+              \textsc{Company Y}, Location Y\\
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus. Fusce lacinia dolor et metus gravida pulvinar sit amet et ex.\\
+              June 2012 -- August 2012};
+  \node[
+    left=\cvTimeDotSep of item 2 header,
+    timedot] 
+    {};
+    
+  % item 3
+  \node[
+      below=\cvSectionSep of item 2.south west,
+      eventdottext] 
+      (item 3 header) 
+      {\phantom{Evening}};
+  \node[
+    below=\cvSectionSep of item 2.south west,
+    sectionedutext] 
+    (item 3) 
+    {Internship\\
+              \textsc{Company Z}, Location Z\\
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus.  Fusce lacinia dolor et metus gravida pulvinar sit amet et ex. Suspendisse vestibulum, leo malesuada molestie maximus, sem risus ornare elit, vitae sodales felis elit in ipsum. \\
+              August 2014 -- September 2014};
+  \node[
+    left=\cvTimeDotSep of item 3 header,
+    timedot] 
+    {};
+  \node[
+    left=\cvTimeDotSep of item 3.south west,
+    invisibletimedot] 
+    (end) 
+    {};
+  \draw (start) to (end.center);
 
 
 \end{tikzpicture}
