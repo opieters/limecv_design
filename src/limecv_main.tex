@@ -55,7 +55,7 @@
 
 % advanced drawing
 \usepackage{tikz}
-\usetikzlibrary{calc,positioning,backgrounds,matrix}
+\usetikzlibrary{calc,positioning,backgrounds,matrix,node-families}
 
 % pictures
 \usepackage{graphicx}
@@ -163,6 +163,18 @@
   
   \stepcounter{languages}
 }
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\cvSkill}[1]{%
+  \begingroup
+  \my@repeat@count=\z@
+  \@whilenum\my@repeat@count<#1\do{\faCircle\advance\my@repeat@count\@ne}%
+  \my@repeat@count=\numexpr5-\z@\relax
+  \@whilenum\my@repeat@count>#1\do{\faCircleO\advance\my@repeat@count\m@ne}%
+  \endgroup
+}
+\makeatother
   
 \begin{document}
 
@@ -417,6 +429,37 @@
     {};
   \draw (start) to (end.center);
 
+  %%%%%%%%%%
+  % Skills %
+  %%%%%%%%%%
+  
+  \node[below=0.6cm of item 3.south west,sectionTitle] (title 3) {\cvSection{Skills}};
+  \node[left=\cvTimeDotSep of title 3,headerIcon] {\faStar};
+  \node[below=0.6cm of item 3.south west,sectionTitle] (title 3 dummy) {\phantom{\cvSection{Education}}};
+  \begin{scope}[on background layer]
+    \draw[line width=2pt,cvGreen] 
+      let \p1=(title 3 dummy.south west), 
+          \p2=(current page.east) in 
+      (\x1,\y1-0.1cm) to (\x2,\y1-0.1cm);
+  \end{scope}
+  
+\matrix[matrix of nodes,
+        below=0.6cm of title 3.south west,
+        anchor=north west,
+        column sep=6pt,
+        row sep=6pt,
+        every node/.style={Text Depth=tdSkills},
+        column 1/.style={anchor=east,align=left},
+        column 2/.style={anchor=west},
+        column 3/.style={anchor=east,align=left},
+        column 4/.style={anchor=west}] {
+        \cvSkill{5} & MATLAB           & \cvSkill{5} & \LaTeX \\
+        \cvSkill{4} & Python           & \cvSkill{4} & VHDL \\
+        \cvSkill{4} & Microsoft Office & \cvSkill{4} & macOS \\
+        \cvSkill{3} & C, C++           & \cvSkill{3} & Electrical Engineering \\
+        \cvSkill{3} & HTML5/CSS        & \cvSkill{3} & Bash \\
+        \cvSkill{3} & MPLAB~X          & \cvSkill{2} & Ruby on Rails \\
+        \cvSkill{2} & ModelSim         & \cvSkill{1} & Javascript \\};
 
 \end{tikzpicture}
 
