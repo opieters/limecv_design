@@ -45,6 +45,8 @@
 
 \newcommand{\cvSection}[1]{\Large\textbf{#1}}
 
+\newcommand{\cvEducation}[3]{{\firaMedium #1}\\ #2\\ \emph{#3}}
+
 % links
 \usepackage{hyperref}
 
@@ -74,6 +76,7 @@
 \setmainfont[Numbers={OldStyle,Monospaced}]{Fira Sans}
 \setsansfont{Fira Sans}
 \setmonofont{Fira Mono}
+\newfontfamily\firaMedium{Fira Sans Medium}
 
 \pagestyle{empty}
 
@@ -276,6 +279,7 @@
       (\x1,\y1-0.1cm) to (\x2,\y1-0.1cm);
   \end{scope}
   
+  % item 1
   \node[
       below=\cvSectionSep of title 1.south west,
       eventdottext] 
@@ -285,19 +289,57 @@
     below=\cvSectionSep of title 1.south west,
     sectionedutext] 
     (item 1) 
-    {Evening class: Chinese \\
-                 Some School, City.\\
-                 September 2015 -- June 2016};
+    {\cvEducation{Evening class: Chinese}%
+                 {Some School, City. September 2015 -- June 2016}%
+                 {Achieved A2 language skill in Chinese (Mandarin).}};
   \node[
     left=\cvTimeDotSep of item 1 header,
     timedot] 
     (start) 
     {};
+    
+  % item 2
   \node[
-    left=\cvTimeDotSep of item 1.south west,
+      below=\cvSectionSep of item 1.south west,
+      eventdottext] 
+      (item 2 header) 
+      {\phantom{Evening}};
+  \node[
+    below=\cvSectionSep of item 1.south west,
+    sectionedutext] 
+    (item 2) 
+    {\cvEducation{Bachelor of Science in Biochemistry and Biotechnology}%
+                 {University, City. September 2009 -- June 2012}%
+                 {General training in the basic sciences and the molecular life science.}};
+  \node[
+    left=\cvTimeDotSep of item 2 header,
+    timedot] 
+    {};
+    
+  % item 3
+  \node[
+      below=\cvSectionSep of item 2.south west,
+      eventdottext] 
+      (item 3 header) 
+      {\phantom{Evening}};
+  \node[
+    below=\cvSectionSep of item 2.south west,
+    sectionedutext] 
+    (item 3) 
+    {\cvEducation{Master of Science in Biochemistry and Biotechnology}%
+                 {University, City. September 2012 -- June 2015}%
+                 {Acquisition of insight into and knowledge of possibilities for application in the area of biochemistry and biotechnology, specific with applications in biomedical application and due problem-solving reasoning skills.}};
+  \node[
+    left=\cvTimeDotSep of item 3 header,
+    timedot] 
+    {};
+  \node[
+    left=\cvTimeDotSep of item 3.south west,
     invisibletimedot] 
     (end) 
     {};
+  \draw (start) to (end.center);
+
 
 \end{tikzpicture}
 
