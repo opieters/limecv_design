@@ -46,6 +46,8 @@
 \newcommand{\cvSection}[1]{\Large\textbf{#1}}
 
 \newcommand{\cvEducation}[3]{{\firaMedium #1}\\ #2\\ \emph{#3}}
+\newcommand{\cvExperience}[5]{{\firaMedium #1}\\ \textsc{\selectfont #2}, #3. #4\\ \emph{#5}}
+
 
 % links
 \usepackage{hyperref}
@@ -375,10 +377,12 @@
     below=\cvSectionSep of title 2.south west,
     sectionedutext] 
     (item 1) 
-    {Student Job\\
-              \textsc{\selectfont Company X}, Location X\\
-              Integer tincidunt dapibus consectetur. Nullam tristique aliquam luctus. Sed ut ante velit. Nulla pharetra maximus lacus at elementum. Suspendisse sodales consectetur metus, sit amet ultricies ipsum ultrices ut.\\
-              Summer 2010};
+    {\cvExperience%
+      {Student Job}%
+      {Company X}%
+      {Location X}%
+      {Summer 2010}%
+      {Integer tincidunt dapibus consectetur. Nullam tristique aliquam luctus. Sed ut ante velit. Nulla pharetra maximus lacus at elementum. Suspendisse sodales consectetur metus, sit amet ultricies ipsum ultrices ut.}};
   \node[
     left=\cvTimeDotSep of item 1 header,
     timedot] 
@@ -395,10 +399,12 @@
     below=\cvSectionSep of item 1.south west,
     sectionedutext] 
     (item 2) 
-    {Internship\\
-              \textsc{Company Y}, Location Y\\
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus. Fusce lacinia dolor et metus gravida pulvinar sit amet et ex.\\
-              June 2012 -- August 2012};
+    {\cvExperience%
+      {Internship}%
+      {Company Y}%
+      {Location Y}%
+      {June 2012 -- August 2012}%
+      {Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus. Fusce lacinia dolor et metus gravida pulvinar sit amet et ex.}};
   \node[
     left=\cvTimeDotSep of item 2 header,
     timedot] 
@@ -414,10 +420,11 @@
     below=\cvSectionSep of item 2.south west,
     sectionedutext] 
     (item 3) 
-    {Internship\\
-              \textsc{Company Z}, Location Z\\
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus.  Fusce lacinia dolor et metus gravida pulvinar sit amet et ex. Suspendisse vestibulum, leo malesuada molestie maximus, sem risus ornare elit, vitae sodales felis elit in ipsum. \\
-              August 2014 -- September 2014};
+    {\cvExperience{Internship}%
+       {Company Z}%
+       {Location Z}%
+       {August 2014 -- September 2014}%
+       {Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus.  Fusce lacinia dolor et metus gravida pulvinar sit amet et ex. Suspendisse vestibulum, leo malesuada molestie maximus, sem risus ornare elit, vitae sodales felis elit in ipsum.}};
   \node[
     left=\cvTimeDotSep of item 3 header,
     timedot] 
