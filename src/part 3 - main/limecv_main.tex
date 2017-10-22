@@ -193,7 +193,7 @@
       minimum size=\cvPictureWidth,
       path picture={
         \node at (path picture bounding box.center){
-        \includegraphics[width=\cvPictureWidth]{images/profile_picture}
+        \includegraphics[width=\cvPictureWidth]{../images/profile_picture}
         };
       }]
       {};
@@ -424,7 +424,7 @@
        {Company Z}%
        {Location Z}%
        {August 2014 -- September 2014}%
-       {Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus.  Fusce lacinia dolor et metus gravida pulvinar sit amet et ex. Suspendisse vestibulum, leo malesuada molestie maximus, sem risus ornare elit, vitae sodales felis elit in ipsum.}};
+       {Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum cursus sapien, id eleifend mi pellentesque id. Etiam lobortis eu odio a sodales. Phasellus ut dolor feugiat, lacinia lectus in, blandit metus.  Fusce lacinia dolor et metus gravida pulvinar sit amet et ex.}};
   \node[
     left=\cvTimeDotSep of item 3 header,
     timedot] 
@@ -459,14 +459,36 @@
         column 1/.style={anchor=east,align=left},
         column 2/.style={anchor=west},
         column 3/.style={anchor=east,align=left},
-        column 4/.style={anchor=west}] {
+        column 4/.style={anchor=west}] (skills) {
         \cvSkill{5} & MATLAB           & \cvSkill{5} & \LaTeX \\
         \cvSkill{4} & Python           & \cvSkill{4} & VHDL \\
         \cvSkill{4} & Microsoft Office & \cvSkill{4} & macOS \\
-        \cvSkill{3} & C, C++           & \cvSkill{3} & Electrical Engineering \\
-        \cvSkill{3} & HTML5/CSS        & \cvSkill{3} & Bash \\
-        \cvSkill{3} & MPLAB~X          & \cvSkill{2} & Ruby on Rails \\
-        \cvSkill{2} & ModelSim         & \cvSkill{1} & Javascript \\};
+        \cvSkill{3} & C, C++           & \cvSkill{3} & Electrical Engineering \\};
+
+
+\node[below=0.6cm of skills.south west,sectionTitle] (title 4) {\cvSection{References}};
+\node[left=\cvTimeDotSep of title 4,headerIcon] {\faLink};
+\node[below=0.6cm of skills.south west,sectionTitle] (title 4 dummy) {\phantom{\cvSection{Education}}};
+\begin{scope}[on background layer]
+  \draw[line width=2pt,cvGreen] 
+    let \p1=(title 4 dummy.south west), 
+        \p2=(current page.east) in 
+    (\x1,\y1-0.1cm) to (\x2,\y1-0.1cm);
+\end{scope}
+
+
+\matrix[matrix of nodes,
+      below=0.6cm of title 4.south west,
+      anchor=north west,
+      column sep=6pt,
+      row sep=6pt,
+      every node/.style={Text Depth=tdRefs,anchor=west}] {
+      Jane Smith           & \\
+      Company ABC Co. Ltd. & \\
+      Job title            & \\
+      Street lane 2        & \\
+      B-1150 Brussels      & \\
+      +1 781 555 1212      & \\};
 
 \end{tikzpicture}
 
